@@ -8,7 +8,7 @@ import { Card } from 'src/models/card';
   providedIn: 'root'
 })
 export class GameService {
-  private url = 'https://floating-tundra-54962.herokuapp.com/';
+  private url = 'https://192.168.1.12:3000';
   private socket;
 
   constructor() {
