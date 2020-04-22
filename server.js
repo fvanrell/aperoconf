@@ -7,6 +7,14 @@ let server = http.Server(app);
 let socketIO = require('socket.io');
 let io = socketIO(server);
 
+// Serve static files....
+app.use(express.static(__dirname + '/dist/Pyramide'));
+
+// Send all requests to index.html
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/Pyramide/index.html'));
+});
+
 const port = process.env.PORT || 3000;
 
 io.on('connection', (socket) => {
@@ -19,23 +27,23 @@ io.on('connection', (socket) => {
     socket.on('new-game', (game) => {
         io.emit('new-game', game)
     });
-    
+
     socket.on('start-game', (started) => {
         io.emit('start-game', started)
     });
-    
+
     socket.on('set-deck', (deck) => {
         io.emit('set-deck', deck)
     });
-    
+
     socket.on('set-round', (round) => {
         io.emit('set-round', round)
     });
-    
+
     socket.on('close-dialog', (bool) => {
         io.emit('close-dialog', bool)
     });
-    
+
     socket.on('end-first-part', (bool) => {
         io.emit('end-first-part', bool)
     });
@@ -43,15 +51,15 @@ io.on('connection', (socket) => {
     socket.on('set-current-answer', ([value, round, player, deck]) => {
         io.emit('set-current-answer', [value, round, player, deck])
     });
-    
+
     socket.on('return-card', ([index, bool]) => {
         io.emit('return-card', [index, bool])
     });
-    
+
     socket.on('return-player-card', ([playerIdx, index, bool]) => {
         io.emit('return-player-card', [playerIdx, index, bool])
     });
-    
+
     socket.on('restart', (bool) => {
         io.emit('restart', bool)
     });
