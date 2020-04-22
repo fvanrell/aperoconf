@@ -8,11 +8,11 @@ let socketIO = require('socket.io');
 let io = socketIO(server);
 
 // Serve static files....
-app.use(express.static(__dirname + '/dist/aperoconf'));
+app.use(express.static(__dirname + '/dist/Pyramide'));
 
 // Send all requests to index.html
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/aperoconf/index.html'));
+  res.sendFile(path.join(__dirname + '/dist/Pyramide/index.html'));
 });
 
 const port = process.env.PORT || 3000;
