@@ -8,7 +8,7 @@ import { Card } from 'src/models/card';
   providedIn: 'root'
 })
 export class GameService {
-  private url = 'https://aperoconf2.herokuapp.com/';
+  private url = 'https://floating-tundra-54962.herokuapp.com/';
   private socket;
 
   constructor() {
