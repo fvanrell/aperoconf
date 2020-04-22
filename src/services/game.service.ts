@@ -8,11 +8,11 @@ import { Card } from 'src/models/card';
   providedIn: 'root'
 })
 export class GameService {
-  private url = 'https://192.168.1.12:3000';
+  //private url = 'https://192.168.1.12:3000';
   private socket;
 
   constructor() {
-    this.socket = io(this.url);
+    this.socket = io();
   }
 
   public addPlayer(player: Player) {

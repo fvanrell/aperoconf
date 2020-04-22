@@ -1,10 +1,12 @@
 let express = require('express')
 let app = express();
 
-var server = app.listen(3000);
-var io = require('socket.io').listen(server);
+let server = app.listen(process.env.PORT || 3000)
+let socketIO = require('socket.io');
+let io = socketIO(server);
 
 app.use(express.static(__dirname + '/dist/Pyramide'));
+
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname + '/dist/Pyramide/index.html'));
@@ -58,4 +60,8 @@ io.on('connection', (socket) => {
     socket.on('restart', (bool) => {
         io.emit('restart', bool)
     });
+});
+
+server.listen(port, () => {
+    console.log(`started on port: ${port}`);
 });
