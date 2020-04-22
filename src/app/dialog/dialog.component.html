@@ -1,0 +1,53 @@
+<div id="myModal" class="modal" (click)="close(true)">
+  <div class="modal-content">
+    <span class="close" (click)="close(true)">&times;</span>
+    <p *ngIf="isCorrect === 1">
+      Bravo {{ player.name }} ! Tu distribues {{ roundNb }} gorgée(s) !
+    </p>
+    <p *ngIf="isCorrect === 2">
+      Raté {{ player.name }} ! Tu bois {{ roundNb }} gorgée(s) !
+    </p>
+    <p *ngIf="isCorrect === 3">
+      Poteau ! {{ player.name }} tu bois 5 gorgées !
+    </p>
+    <p *ngIf="isCorrect === 4">
+      Bravo {{ player.name }} ! Tu distribues 4 gorgées ! <br />
+      Hepepep... T'as aussi fait poteau fray, tu bois 5 gorgées !
+    </p>
+    <p *ngIf="isCorrect === 5">
+      Raté {{ player.name }} ! Tu bois 4 gorgées ! <br />
+      Et 5 gorgées de plus pour le poteau... J'appelle ça un "DOUBLE CHEH"
+    </p>
+    <img *ngIf="isCorrect === 1" src="../../assets/cool.gif" />
+    <img
+      *ngIf="isCorrect === 2 && roundNb === 1"
+      src="../../assets/drink1.gif"
+    />
+    <img
+      *ngIf="isCorrect === 2 && roundNb === 2"
+      src="../../assets/drink2.gif"
+    />
+    <img
+      *ngIf="isCorrect === 2 && roundNb === 3"
+      src="../../assets/drink3.gif"
+    />
+    <img
+      *ngIf="isCorrect === 2 && roundNb === 4"
+      src="../../assets/drink4.gif"
+    />
+    <img
+      *ngIf="isCorrect === 3 && roundNb === 2"
+      src="../../assets/fail1.gif"
+    />
+    <img
+      *ngIf="isCorrect === 3 && roundNb === 3"
+      src="../../assets/fail2.gif"
+    />
+    <img
+      *ngIf="isCorrect === 3 && roundNb === 4"
+      src="../../assets/fail3.gif"
+    />
+    <img *ngIf="isCorrect === 4" src="../../assets/smallfail.gif" />
+    <img *ngIf="isCorrect === 5" src="../../assets/bigfail.gif" />
+  </div>
+</div>

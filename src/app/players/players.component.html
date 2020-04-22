@@ -1,0 +1,68 @@
+<div class="container">
+  <input
+    type="text"
+    #player
+    (keyup.enter)="emitName(player.value); player.value = ''"
+    (input)="checkName(player.value)"
+    placeholder="Nom du joueur"
+  />
+  <div class="warningContainer" *ngIf="showSpan">
+    <fa-icon class="warning" [icon]="faExclamationCircle"></fa-icon>
+    <span class="warning">Entrée vide</span>
+  </div>
+</div>
+<div class="playerDisplay" *ngFor="let player of players; let playerIdx = index;">
+  <p>{{ player.name }}</p>
+  <img
+    *ngIf="player.cards[0]"
+    [src]="
+    player.cards[0].shown
+        ? '../../assets/' +
+        player.cards[0].rank +
+          '_' +
+          player.cards[0].suit +
+          '.gif'
+        : '../../assets/verso.gif'
+    "
+    (click)="returnCard(playerIdx, 0)"
+  />
+  <img
+    *ngIf="player.cards[1]"
+    [src]="
+      player.cards[1].shown
+        ? '../../assets/' +
+          player.cards[1].rank +
+          '_' +
+          player.cards[1].suit +
+          '.gif'
+        : '../../assets/verso.gif'
+    "
+    (click)="returnCard(playerIdx, 1)"
+  />
+  <img
+    *ngIf="player.cards[2]"
+    [src]="
+      player.cards[2].shown
+        ? '../../assets/' +
+          player.cards[2].rank +
+          '_' +
+          player.cards[2].suit +
+          '.gif'
+        : '../../assets/verso.gif'
+    "
+    (click)="returnCard(playerIdx, 2)"
+  />
+  <img
+    *ngIf="player.cards[3]"
+    [src]="
+      player.cards[3].shown
+        ? '../../assets/' +
+          player.cards[3].rank +
+          '_' +
+          player.cards[3].suit +
+          '.gif'
+        : '../../assets/verso.gif'
+    "
+    (click)="returnCard(playerIdx, 3)"
+  />
+</div>

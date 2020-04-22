@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+input {
+  border: 1px solid #9999;
+  border-radius: 4px;
+  margin: auto;
+  height: 20px;
+  padding-left: 5px;
+}
+
+img {
+  height: 60px;
+  width: 42px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.playerDisplay {
+  margin: 10px;
+}
+
+.warningContainer {
+  display: inline-flex;
+  margin: auto;
+}
+
+.warning {
+  font-size: 12px;
+  font-style: italic;
+  color: rgb(136, 15, 15);
+  padding-right: 5px;
+}

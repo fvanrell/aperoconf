@@ -1,0 +1,62 @@
+.left {
+  float: left;
+  background-color: #ffe6e6;
+  width: 20%;
+  height: 100%;
+}
+
+img {
+  height: 100px;
+  width: 70px;
+  padding: 10px 25px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.main {
+  float: left;
+  height: 100%;
+  width: 75%;
+  text-align: center;
+}
+
+.right {
+  width: 5%;
+  height: 100%;
+  float: left;
+}
+
+.gameInfo {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  h1 {
+    color: #330000;
+  }
+}
+
+.floor {
+  text-align: center;
+}
+
+.countdownContainer {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.countdownShown {
+  font-size: 40px;
+  visibility: visible;
+  color: rgb(196, 76, 96);
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.countdownHide {
+  visibility: hidden;
+}
+
+p {
+  color: rgb(196, 76, 96);
+  font-style: italic;
+}

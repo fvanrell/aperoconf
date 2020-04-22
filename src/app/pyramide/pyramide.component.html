@@ -1,0 +1,131 @@
+<app-players
+  class="left"
+  [players]="players"
+  (newPlayer)="addPlayer($event)"
+></app-players>
+
+<div class="main">
+  <div *ngIf="gameStarted" class="gameInfo">
+    <h1>
+      {{ title }}
+    </h1>
+    <h2 *ngIf="roundNb">
+      {{
+        cpt <= players.length
+          ? "A toi de jouer " + players[cpt - 1].name
+          : "Premier tour terminé !"
+      }}
+    </h2>
+  </div>
+
+  <app-first-round
+    *ngIf="roundNb === 1"
+    [roundNb] = "1"
+    [currentPlayerCpt] = "cpt"
+    [currentDeck] = "deck"
+  ></app-first-round>
+
+  <app-second-round
+    *ngIf="roundNb === 2"
+    [roundNb] = "2"
+    [currentPlayerCpt] = "cpt"
+    [currentDeck] = "deck"
+  ></app-second-round>
+
+  <app-third-round
+    *ngIf="roundNb === 3"
+    [roundNb] = "3"
+    [currentPlayerCpt] = "cpt"
+    [currentDeck] = "deck"
+  ></app-third-round>
+
+  <app-fourth-round
+    *ngIf="roundNb === 4"
+    [roundNb] = "4"
+    [currentPlayerCpt] = "cpt"
+    [currentDeck] = "deck"
+  ></app-fourth-round>
+
+  <div class="countdownContainer">
+    <countdown
+      [ngClass]="showCountdown ? 'countdownShown' : 'countdownHide'"
+      #cd
+      [config]="{
+        leftTime: 10,
+        formatDate: 'ss',
+        demand: 'true'
+      }"
+      (finished)="onCountdownOver()"
+      >$!s!</countdown
+    >
+    <p *ngIf="showCountdown">secondes</p>
+  </div>
+
+  <div *ngIf="pyramide && !showCountdown">
+    <div class="floor">
+      <img
+        [src]="
+          pyramideCards[14].shown
+            ? '../../assets/' + deck[14].rank + '_' + deck[14].suit + '.gif'
+            : '../../assets/verso.gif'
+        "
+        (click)="returnCard(14)"
+      />
+    </div>
+    <div class="floor">
+      <img
+        *ngFor="let card of pyramideCards | slice: 12:14; let idx_floor4 = index;"
+        [src]="
+          card.shown
+            ? '../../assets/' + card.rank + '_' + card.suit + '.gif'
+            : '../../assets/verso.gif'
+        "
+        (click)="returnCard(idx_floor4 + 12)"
+      />
+    </div>
+    <div class="floor">
+      <img
+        *ngFor="let card of pyramideCards | slice: 9:12; let idx_floor3 = index;"
+        [src]="
+          card.shown
+            ? '../../assets/' + card.rank + '_' + card.suit + '.gif'
+            : '../../assets/verso.gif'
+        "
+        (click)="returnCard(idx_floor3 + 9)"
+      />
+    </div>
+    <div class="floor">
+      <img
+        *ngFor="let card of pyramideCards | slice: 5:9; let idx_floor2 = index;"
+        [src]="
+          card.shown
+            ? '../../assets/' + card.rank + '_' + card.suit + '.gif'
+            : '../../assets/verso.gif'
+        "
+        (click)="returnCard(idx_floor2 + 5)"
+      />
+    </div>
+    <div class="floor">
+      <img
+        *ngFor="let card of pyramideCards | slice: 0:5; let idx_floor1 = index;"
+        [src]="
+          card.shown
+            ? '../../assets/' + card.rank + '_' + card.suit + '.gif'
+            : '../../assets/verso.gif'
+        "
+        (click)="returnCard(idx_floor1)"
+      />
+    </div>
+  </div>
+
+  <app-dialog
+    *ngIf="dialog"
+    [player]="currentPlayer"
+    [isCorrect]="isCorrect"
+    [roundNb]="currentRoundNb"
+    [isLast]="isLast"
+    (isOver)="launchPyramide($event)"
+  ></app-dialog>
+</div>
+
+<app-menu (gameStarted)="startGame($event)" (gameRestarted)="restart($event)" class="right"></app-menu>

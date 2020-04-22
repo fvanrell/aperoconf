@@ -1,0 +1,24 @@
+<div id="myModal" class="modal" (click)="close(true)">
+  <div class="modal-content">
+    <span class="close" (click)="close(true)">&times;</span>
+    <p *ngIf="isCorrect === 1">
+      Perdu {{ player.name }} ! Tu bois {{ floorNb }} gorgée(s) !
+    </p>
+    <p *ngIf="isCorrect === 2">
+      Bravo {{ player.name }} ! Tu distribues {{ floorNb }} gorgée(s) !
+    </p>
+    <p *ngIf="isCorrect === 3">
+      Il n'y a plus de cartes... Fin du jeu !
+    </p>
+    <img
+      *ngIf="isCorrect === 1 && floorNb < 5"
+      src="../../assets/drink3.gif"
+    />
+    <img
+      *ngIf="isCorrect === 1 && floorNb >= 5"
+      src="../../assets/drink4.gif"
+    />
+    <img *ngIf="isCorrect === 2" src="../../assets/bigfail.gif" />
+    <img *ngIf="isCorrect === 3" src="../../assets/sad.gif" />
+  </div>
+</div>

@@ -1,0 +1,95 @@
+<app-players
+  class="left"
+  [players]="players"
+  (newPlayer)="addPlayer($event)"
+></app-players>
+
+<div class="main">
+  <div class="gameInfo">
+    <h1>
+      {{ title }}
+    </h1>
+    <div *ngIf="gameStarted && players" class="container">
+      <h2>
+        {{ "A toi de jouer " + players[cpt - 1].name + " : "}}
+      </h2>
+      <fa-icon
+        id="plus"
+        class="icon"
+        [icon]="faPlusCircle"
+        (click)="currentChoice = true"
+      ></fa-icon>
+      <p>ou</p>
+      <fa-icon
+        id="minus"
+        class="icon"
+        [icon]="faMinusCircle"
+        (click)="currentChoice = false"
+      ></fa-icon>
+      <p>ou</p>
+      <fa-icon
+        id="pass"
+        class="icon"
+        [icon]="faForward"
+        (click)="nextPlayer()"
+      ></fa-icon>
+    </div>
+  </div>
+
+  <div *ngIf="gameStarted" class="container">
+    <div class="cardContainer">
+      <div class="floor">
+        <img
+          *ngFor="let card of gameCards | slice: 0:4"
+          [src]="
+            card.shown
+              ? '../../assets/' + card.rank + '_' + card.suit + '.gif'
+              : '../../assets/verso.gif'
+          "
+          (click)="returnCard(card, currentChoice, 3)"
+        />
+      </div>
+      <div class="floor">
+        <img
+          *ngFor="let card of gameCards | slice: 4:8"
+          [src]="
+            card.shown
+              ? '../../assets/' + card.rank + '_' + card.suit + '.gif'
+              : '../../assets/verso.gif'
+          "
+          (click)="returnCard(card, currentChoice, 2)"
+        />
+      </div>
+      <div class="floor">
+        <img
+          *ngFor="let card of gameCards | slice: 8:12"
+          [src]="
+            card.shown
+              ? '../../assets/' + card.rank + '_' + card.suit + '.gif'
+              : '../../assets/verso.gif'
+          "
+          (click)="returnCard(card, currentChoice, 1)"
+        />
+      </div>
+      <div class="floor">
+        <img
+          [src]="
+            starterCard.shown
+              ? '../../assets/' + starterCard.rank + '_' + starterCard.suit + '.gif'
+              : '../../assets/verso.gif'
+          "
+        />
+      </div>
+    </div>
+  </div>
+
+  <app-dialog-immeuble
+    *ngIf="dialog"
+    [player]="currentPlayer"
+    [isCorrect]="isCorrect"
+    [floorNb]="drinkCounter"
+    (isClosed)="closeModal($event)"
+  ></app-dialog-immeuble>
+</div>
+
+<app-menu (gameStarted)="startGame($event)" class="right"></app-menu>

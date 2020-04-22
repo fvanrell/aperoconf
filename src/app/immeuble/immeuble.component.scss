@@ -1,0 +1,71 @@
+.left {
+  float: left;
+  background-color: #ffe6e6;
+  width: 20%;
+  height: 100%;
+}
+
+img {
+  height: 100px;
+  width: 70px;
+  padding: 10px 25px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.main {
+  float: left;
+  height: 100%;
+  width: 75%;
+  text-align: center;
+}
+
+.right {
+  width: 5%;
+  height: 100%;
+  float: left;
+}
+
+.gameInfo {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  h1 {
+    color: #330000;
+  }
+}
+
+.floor {
+  text-align: center;
+}
+
+p {
+  color: rgb(196, 76, 96);
+  font-style: italic;
+  font-size: 20px;
+}
+
+h2 {
+  margin-left: 20px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.choiceContainer {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 50px;
+  float: left;
+  cursor: pointer;
+  margin: 0 20px;
+}
+
+.cardContainer {
+  margin: auto;
+}

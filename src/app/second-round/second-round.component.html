@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="subcontainer">
+    <p>Plus</p>
+    <fa-icon
+      id="plus"
+      class="icon"
+      [icon]="faPlusCircle"
+      (click)="sendAnswer(true)"
+    ></fa-icon>
+  </div>
+  <div class="subcontainer">
+    <p>ou</p>
+  </div>
+  <div class="subcontainer">
+    <p>Moins</p>
+    <fa-icon
+      id="minus"
+      class="icon"
+      [icon]="faMinusCircle"
+      (click)="sendAnswer(false)"
+    ></fa-icon>
+  </div>
+</div>
