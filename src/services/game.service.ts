@@ -8,7 +8,7 @@ import { Card } from 'src/models/card';
   providedIn: 'root'
 })
 export class GameService {
-  private url = 'http://localhost:3000';
+  private url = 'https://aperoconf2.herokuapp.com/';
   private socket;
 
   constructor() {
